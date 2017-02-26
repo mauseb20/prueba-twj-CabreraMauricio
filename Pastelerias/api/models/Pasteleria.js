@@ -37,7 +37,7 @@ module.exports = {
 
         Pasteles:{
             collection: 'Pastel',
-            via: 'idPasteleria'
+            via: 'PasteleriaPrepara'
         }
     }
 };

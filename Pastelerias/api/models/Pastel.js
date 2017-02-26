@@ -22,12 +22,6 @@ module.exports = {
             size: 100
         },
         
-        nombrePastel:{
-            type: 'string',
-            required: true,
-            size: 100
-        },
-        
         tmpElaboracion:{
             type: 'integer',
             required: true,
@@ -39,7 +33,7 @@ module.exports = {
             size: 300
         },
         
-        idPasteleria:{
+        PasteleriaPrepara:{
             model: 'Pasteleria'
         }
         

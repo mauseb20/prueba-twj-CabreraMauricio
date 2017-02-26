@@ -22,7 +22,7 @@
 
 module.exports.routes = {
 
-  /***************************************************************************
+    /***************************************************************************
   *                                                                          *
   * Make the view located at `views/homepage.ejs` (or `views/homepage.jade`, *
   * etc. depending on your default view engine) your home page.              *
@@ -32,11 +32,16 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'homepage'
-  }
-
-  /***************************************************************************
+    'get /': 'RutasController.home',
+    'get /home': 'RutasController.home',
+    
+    '/agregarPastel':'RutasController.crearPastel',
+    '/editarPastel':'RutasController.editarPastel',
+    
+    '/agregarPasteleria':'RutasController.crearPasteleria',
+    '/editarPasteleria':'RutasController.editarPasteleria',
+    
+    /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
   *                                                                          *
