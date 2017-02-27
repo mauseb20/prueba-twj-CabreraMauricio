@@ -35,6 +35,7 @@ module.exports.routes = {
     'get /': 'RutasController.home',
     'get /home': 'RutasController.home',
     
+    '/pasteles':'RutasController.pasteles',
     '/agregarPastel':'RutasController.crearPastel',
     '/editarPastel':'RutasController.editarPastel',
     
