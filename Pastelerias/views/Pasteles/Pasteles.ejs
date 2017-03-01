@@ -1,5 +1,7 @@
 <div class="col-sm-12">
-    <h1>Catalogo de la pasteleria <%= pasteleria.nombrePasteleria%></h1>
+    <h1>Catalogo de la pasteleria "<%= pasteleria.nombrePasteleria%>"</h1>
+    <h2>Ciudad: <%= pasteleria.ciudad%></h2>
+    <h3>Pedidos/Contacto: <%= pasteleria.correo%></h3>
     <input type="hidden" name="pasteleriaActual" value="<%= pasteleria.idPasteleria%>">
     <br>
     <% for(var i=0; i<pasteleria.Pasteles.length; i++){ %>
