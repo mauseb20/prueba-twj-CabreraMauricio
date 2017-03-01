@@ -4,17 +4,17 @@
     <br>
     <% for(var i=0; i<pasteleria.Pasteles.length; i++){ %>
     <div class="col-xs-6 col-lg-6" align="center">
-        <div class="panel panel-primary">
+        <div class="panel panel-info">
             <div class="panel-heading">
                 <h3 class="panel-title"><font size=5><%= pasteleria.Pasteles[i].nombrePastel%></font></h3>
             </div>
             <div class="panel-body">
                 <p>Tiempo de preparacion: <%= pasteleria.Pasteles[i].tmpElaboracion%> horas</p>
-                <img class="img-responsive" src="http://www.loschatos.com/pasteles/de-linea/pastel-chocolate.jpg">
+                <img class="img-responsive" src="<%= pasteleria.Pasteles[i].urlFoto%>">
                 <br>
                 <div class="btn-group btn-group-sm" role="group">
-                    <a href="/editarPastel?idPastel=<%= pasteleria.Pasteles[i].idPastel%>" type="button" role="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
-                    <a href="" type="button" role="button" class="btn btn-primary"><span class="glyphicon glyphicon-remove"></span></a>
+                    <a href="/editarPastel?idPastel=<%= pasteleria.Pasteles[i].idPastel%>" data-toggle="tooltip" title="Editar Pastel" type="button" role="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="/Pastel/borrarPastel?idPastel=<%= pasteleria.Pasteles[i].idPastel%>" data-toggle="tooltip" title="Eliminar Pastel" type="button" role="button" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></a>
                 </div>
             </div>
         </div>

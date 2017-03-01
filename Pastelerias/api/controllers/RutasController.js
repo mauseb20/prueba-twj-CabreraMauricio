@@ -58,24 +58,55 @@ module.exports = {
     },
     editarPastel: function (req, res) {
         // res.view(String: Nombre vista, Datos JSON)
-        return res.view('Pasteles/EditarPastel',{
-            title: 'pasteles',
-            tituloError: ''
-        })
+        var parametros = req.allParams();
+        if (parametros.idPastel){
+            Pastel.findOne({
+                idPastel: parametros.idPastel
+            }).exec(function(error,pastelEncontrado){
+                Pasteleria.find().sort('nombrePasteleria ASC').exec(function(error,pasteleriasEncontradas){
+                    if (error) return res.serverError();
+                    return res.view('Pasteles/EditarPastel',{
+                        title: 'pasteles',
+                        tituloError: '',
+                        pasteleriaActual: pastelEncontrado.PasteleriaPrepara,
+                        pastelerias: pasteleriasEncontradas,
+                        pastel: pastelEncontrado
+                    })
+                })
+            })
+        }
     },
     crearPasteleria: function (req, res) {
         // res.view(String: Nombre vista, Datos JSON)
-        return res.view('Pastelerias/CrearPasteleria',{
-            title: 'pasteles',
-            tituloError: ''
+        Pasteleria.find().sort('nombrePasteleria ASC').exec(function(error,pasteleriasEncontradas){
+            if (error) return res.serverError();
+            return res.view('Pastelerias/CrearPasteleria',{
+                title: 'pasteles',
+                tituloError: '',
+                pasteleriaActual: 0,
+                pastelerias: pasteleriasEncontradas
+            })
         })
     },
     editarPasteleria: function (req, res) {
         // res.view(String: Nombre vista, Datos JSON)
-        return res.view('Pastelerias/EditarPasteleria',{
-            title: 'pasteles',
-            tituloError: ''
-        })
+        var parametros = req.allParams();
+        if (parametros.idPasteleria){
+            Pasteleria.findOne({
+                idPasteleria: parametros.idPasteleria
+            }).exec(function(error,pasteleriaEncontrada){
+                Pasteleria.find().sort('nombrePasteleria ASC').exec(function(error,pasteleriasEncontradas){
+                    if (error) return res.serverError();
+                    return res.view('Pastelerias/EditarPasteleria',{
+                        title: 'pasteles',
+                        tituloError: '',
+                        pasteleriaActual: parametros.idPasteleria,
+                        pastelerias: pasteleriasEncontradas,
+                        pasteleria: pasteleriaEncontrada
+                    })
+                })
+            })
+        }
     },
 };
 
