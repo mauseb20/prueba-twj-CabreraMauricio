@@ -47,12 +47,23 @@ module.exports = {
         // res.view(String: Nombre vista, Datos JSON)
         Pasteleria.find().sort('nombrePasteleria ASC').exec(function(error,pasteleriasEncontradas){
             if (error) return res.serverError();
-            return res.view('Pasteles/CrearPastel',{
-                title: 'pasteles',
-                tituloError: '',
-                pasteleriaActual: 0,
-                pastelerias: pasteleriasEncontradas
-            })
+            if (pasteleriasEncontradas==''){
+                return res.view('error',{
+                    title: 'pasteles',
+                    tituloError: 'error',
+                    pasteleriaActual: 0,
+                    pastelerias: pasteleriasEncontradas,
+                    error: 'No puede agregar pasteles si no existen pastelerias, primero ingrese una pasteleria',
+                    url: '/home'
+                })
+            }else{
+                return res.view('Pasteles/CrearPastel',{
+                    title: 'pasteles',
+                    tituloError: '',
+                    pasteleriaActual: 0,
+                    pastelerias: pasteleriasEncontradas
+                })
+            }
         })
 
     },
